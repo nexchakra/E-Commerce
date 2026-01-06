@@ -34,4 +34,5 @@ NexChakra builds unified SaaS platforms for institutions and private businesses 
 For collaboration or inquiries:
 
 🌐 www.nexchakra.com
+
 📧 info@nexchakra.com
