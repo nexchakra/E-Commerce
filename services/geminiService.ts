@@ -2,7 +2,15 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Product, StylingRecommendation } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+function createGeminiClient() {
+  const apiKey = import.meta.env.VITE_API_KEY;
+
+  if (!apiKey) {
+    throw new Error("VITE_API_KEY is missing");
+  }
+
+  return new GoogleGenAI({ apiKey });
+}
 
 /**
  * AI Stylist: Recommends products based on user query
@@ -72,6 +80,7 @@ export async function visualSearch(
   imageBase64: string,
   products: Product[]
 ): Promise<StylingRecommendation> {
+  const ai = createGeminiClient();
   const modelName = 'gemini-3-flash-preview';
 
   const productContext = products.map(p => 
@@ -129,6 +138,7 @@ export async function getComplementarySuggestions(
   product: Product,
   allProducts: Product[]
 ): Promise<StylingRecommendation> {
+  const ai = createGeminiClient();
   const modelName = 'gemini-3-flash-preview';
   
   const otherProducts = allProducts.filter(p => p.id !== product.id);
