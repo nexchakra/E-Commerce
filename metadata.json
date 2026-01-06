@@ -1,0 +1,8 @@
+
+{
+  "name": "Lumina Luxe E-Commerce",
+  "description": "A high-end clothing e-commerce platform featuring an AI Stylist, visual search capabilities, and personalized fashion recommendations powered by Gemini.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
